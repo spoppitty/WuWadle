@@ -1,14 +1,55 @@
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f7f7f7;
+  margin: 0;
+  padding: 2rem;
+  background-color: #f4f4f4;
 }
 
 main {
-  text-align: center;
-  margin-top: 100px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 h1 {
-  font-size: 48px;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.resonator-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.resonator-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.resonator-table th,
+.resonator-table td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.resonator-table th {
+  background-color: #222;
+  color: white;
+}
+
+.resonator-table td {
+  font-size: 0.95rem;
+}
+
+.resonator-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
 }
