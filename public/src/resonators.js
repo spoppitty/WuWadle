@@ -1,6 +1,6 @@
 const resonators = [
   {
-    name: "/src/assets/chixiaIcon.png",
+    name: "/src/assets/iconChixia.png",
     altName: "Chixia",
     element: "Fusion",
     weaponType: "Pistols",
@@ -10,7 +10,7 @@ const resonators = [
     releaseYear: 2024
   },
   {
-    name: "/src/assets/jiyanIcon.png",
+    name: "/src/assets/iconJiyan.png",
     altName: "Jiyan",
     element: "Aero",
     weaponType: "Broadblade",
@@ -20,7 +20,7 @@ const resonators = [
     releaseYear: 2024
   },
   {
-    name: "/src/assets/yinlinIcon.png",
+    name: "/src/assets/iconYinlin.png",
     altName: "Yinlin",
     element: "Electro",
     weaponType: "Rectifier",
