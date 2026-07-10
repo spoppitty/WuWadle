@@ -4,7 +4,9 @@ const app = document.getElementById("app");
 
 app.innerHTML = `
   <main>
-    <h1>WuWadle</h1>
+    <div> 
+      <img src="/src/assets/logo1.png" class = "page-logo" alt="Website Logo">
+    </div>
 
     <div class="guess-box">
       <div class="guess-title">Guess Today's Resonator</div>

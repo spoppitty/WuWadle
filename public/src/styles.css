@@ -21,14 +21,13 @@ main {
 }
 
 
-
-/*"WuWadle page title*/
-h1 {
-  text-align: center;
-  color: white;
+/*"WuWadle page title/logo*/
+.page-logo {
+  width: 400px;
+  height: auto;
+  display: block;
+  margin: 1rem auto 2rem;
 }
-
-
 
 /*"Guess today's resonator box"*/
 .guess-box {
