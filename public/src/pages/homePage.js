@@ -14,12 +14,17 @@ app.innerHTML = `
     </div>
 
     <div class="guess-input-wrapper">
-      <input
-        type="text"
-        class="guess-input"
-        id="guessInput"
-        placeholder="Enter resonator name..."
-      >
+      <div class="search-area">
+        <input
+          type="text"
+          class="guess-input"
+          id="guessInput"
+          placeholder="Enter resonator name..."
+          autocomplete="off"
+        >
+
+        <div class="search-results" id="searchResults"></div>
+      </div>
 
       <button class="add-guess-button" id="addGuessButton">+</button>
     </div>
@@ -32,7 +37,7 @@ app.innerHTML = `
             <th>Gender</th>
             <th>Element</th>
             <th>Weapon Type</th>
-            <th>Region</th>
+            <th>First Appearance</th>
             <th>Rarity</th>
             <th>Release Year</th>
           </tr>
@@ -53,7 +58,7 @@ app.innerHTML = `
                   <td>${resonator.gender}</td>
                   <td>${resonator.element}</td>
                   <td>${resonator.weaponType}</td>
-                  <td>${resonator.region}</td>
+                  <td>${resonator.firstAppearance}</td>
                   <td>${resonator.rarity}-Star</td>
                   <td>${resonator.releaseYear}</td>
                 </tr>
@@ -87,6 +92,70 @@ infoButton.addEventListener("click", () => {
 // guess resonator button
 const addGuessButton = document.getElementById("addGuessButton");
 const resonatorTableBody = document.getElementById("resonatorTableBody");
+
+const guessInput = document.getElementById("guessInput");
+const searchResults = document.getElementById("searchResults");
+
+function showSearchResults(searchText) {
+  searchResults.innerHTML = "";
+
+  if (searchText.trim() === "") {
+    searchResults.classList.remove("show");
+    return;
+  }
+
+  const search = searchText.trim().toLowerCase();
+
+  const matchingResonators = resonators
+    .filter((resonator) =>
+      resonator.name.toLowerCase().startsWith(search)
+    )
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  if (matchingResonators.length === 0) {
+    searchResults.innerHTML = `
+      <div class="search-result-empty">No resonators found</div>
+    `;
+    searchResults.classList.add("show");
+    return;
+  }
+
+  matchingResonators.forEach((resonator) => {
+    const resultItem = document.createElement("button");
+    resultItem.type = "button";
+    resultItem.className = "search-result-item";
+
+    resultItem.innerHTML = `
+      <img
+        src="${resonator.icon}"
+        alt="${resonator.name}"
+        class="search-result-icon"
+      >
+      <span>${resonator.name}</span>
+    `;
+
+    resultItem.addEventListener("click", () => {
+      guessInput.value = resonator.name;
+      searchResults.innerHTML = "";
+      searchResults.classList.remove("show");
+    });
+
+    searchResults.appendChild(resultItem);
+  });
+
+  searchResults.classList.add("show");
+}
+
+guessInput.addEventListener("input", () => {
+  showSearchResults(guessInput.value);
+});
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".search-area")) {
+    searchResults.innerHTML = "";
+    searchResults.classList.remove("show");
+  }
+});
 
 addGuessButton.addEventListener("click", () => {
   const newRow = document.createElement("tr");
