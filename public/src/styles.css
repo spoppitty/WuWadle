@@ -1,8 +1,10 @@
+/*page stylings*/
 body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 2rem;
 
+  /*background image*/
   background-color: #2D779C;
   background-image: 
     linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(7, 29, 41, 1)),
@@ -18,11 +20,15 @@ main {
   margin: 0 auto;
 }
 
+
+
 /*"WuWadle page title*/
 h1 {
   text-align: center;
   color: white;
 }
+
+
 
 /*"Guess today's resonator box"*/
 .guess-box {
@@ -48,6 +54,8 @@ h1 {
   font-weight: normal;
 }
 
+
+
 /*text input field*/
 .guess-input-wrapper {
   display: flex;
@@ -66,6 +74,25 @@ h1 {
   text-align: center;
 }
 
+.guess-input-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.add-guess-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+/*resonator table*/
 .resonator-list {
   display: flex;
   flex-direction: column;
@@ -102,6 +129,8 @@ h1 {
   border-radius: 8px;
 }
 
+
+/*info button*/
 .info-button {
   position: fixed;
   bottom: 1.5rem;

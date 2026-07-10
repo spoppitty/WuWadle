@@ -1,7 +1,7 @@
 const resonators = [
   {
-    name: "/src/assets/iconChixia.png",
-    altName: "Chixia",
+    icon: "/src/assets/iconChixia.png",
+    name: "Chixia",
     element: "Fusion",
     weaponType: "Pistols",
     gender: "Female",
@@ -10,8 +10,8 @@ const resonators = [
     releaseYear: 2024
   },
   {
-    name: "/src/assets/iconJiyan.png",
-    altName: "Jiyan",
+    icon: "/src/assets/iconJiyan.png",
+    name: "Jiyan",
     element: "Aero",
     weaponType: "Broadblade",
     gender: "Male",
@@ -20,8 +20,8 @@ const resonators = [
     releaseYear: 2024
   },
   {
-    name: "/src/assets/iconYinlin.png",
-    altName: "Yinlin",
+    icon: "/src/assets/iconYinlin.png",
+    name: "Yinlin",
     element: "Electro",
     weaponType: "Rectifier",
     gender: "Female",
