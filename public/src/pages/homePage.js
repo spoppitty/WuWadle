@@ -2,10 +2,17 @@ import resonators from "../resonators.js";
 
 const app = document.getElementById("app");
 
+// picking a target resonator on each refresh
 const targetResonator =
   resonators[Math.floor(Math.random() * resonators.length)];
 
+// debug
 console.log("Target resonator:", targetResonator);
+
+// check if the guessed resonator trait matches the target resonator's trait
+function getMatchClass(resonatorValue, targetValue) {
+  return resonatorValue === targetValue ? "match" : "no-match";
+}
 
 app.innerHTML = `
   <main>
@@ -48,29 +55,7 @@ app.innerHTML = `
           </tr>
         </thead>
 
-        <tbody id="resonatorTableBody">
-          ${resonators
-            .map(
-              (resonator) => `
-                <tr>
-                  <td>
-                    <img
-                      src="${resonator.icon}"
-                      alt="${resonator.name}"
-                      class="resonator-img"
-                    >
-                  </td>
-                  <td>${resonator.gender}</td>
-                  <td>${resonator.element}</td>
-                  <td>${resonator.weaponType}</td>
-                  <td>${resonator.firstAppearance}</td>
-                  <td>${resonator.rarity}-Star</td>
-                  <td>${resonator.releaseYear}</td>
-                </tr>
-              `
-            )
-            .join("")}
-        </tbody>
+        <tbody id="resonatorTableBody"></tbody>
       </table>
     </section>
   </main>
@@ -100,6 +85,8 @@ const resonatorTableBody = document.getElementById("resonatorTableBody");
 
 const guessInput = document.getElementById("guessInput");
 const searchResults = document.getElementById("searchResults");
+
+let selectedResonator = null;
 
 function showSearchResults(searchText) {
   searchResults.innerHTML = "";
@@ -141,6 +128,8 @@ function showSearchResults(searchText) {
 
     resultItem.addEventListener("click", () => {
       guessInput.value = resonator.name;
+      selectedResonator = resonator;
+
       searchResults.innerHTML = "";
       searchResults.classList.remove("show");
     });
@@ -163,17 +152,58 @@ document.addEventListener("click", (event) => {
 });
 
 addGuessButton.addEventListener("click", () => {
+  const guessName = guessInput.value.trim();
+
+  const guessedResonator =
+    selectedResonator ||
+    resonators.find(
+      (resonator) =>
+        resonator.name.toLowerCase() === guessName.toLowerCase()
+    );
+
+  if (!guessedResonator) {
+    alert("Please select a valid resonator.");
+    return;
+  }
+
   const newRow = document.createElement("tr");
 
   newRow.innerHTML = `
-    <td>New Guess</td>
-    <td>?</td>
-    <td>?</td>
-    <td>?</td>
-    <td>?</td>
-    <td>?</td>
-    <td>?</td>
+    <td>
+      <img
+        src="${guessedResonator.icon}"
+        alt="${guessedResonator.name}"
+        class="resonator-img"
+      >
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.gender, targetResonator.gender)}">
+      ${guessedResonator.gender}
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.element, targetResonator.element)}">
+      ${guessedResonator.element}
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.weaponType, targetResonator.weaponType)}">
+      ${guessedResonator.weaponType}
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.firstAppearance, targetResonator.firstAppearance)}">
+      ${guessedResonator.firstAppearance}
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.rarity, targetResonator.rarity)}">
+      ${guessedResonator.rarity}-Star
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.releaseYear, targetResonator.releaseYear)}">
+      ${guessedResonator.releaseYear}
+    </td>
   `;
 
   resonatorTableBody.prepend(newRow);
+
+  guessInput.value = "";
+  selectedResonator = null;
 });

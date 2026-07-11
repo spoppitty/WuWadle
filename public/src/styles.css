@@ -177,6 +177,19 @@ main {
   font-size: 0.95rem;
 }
 
+/*resonator guess colors*/
+.resonator-table td.match {
+  background-color: rgb(114, 201, 136);
+  color: white;
+  font-weight: bold;
+}
+
+.resonator-table td.no-match {
+  background-color: #c23838;
+  color: white;
+  font-weight: bold;
+}
+
 .resonator-img {
   width: 80px;
   height: 80px;
