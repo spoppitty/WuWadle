@@ -1,4 +1,4 @@
-import { first } from "firebase/firestore/pipelines";
+
 
 const resonators = [
   
@@ -223,7 +223,7 @@ const resonators = [
     releaseYear: 2024
   },
   {
-    icon: "/src/assets/iconJinshi.png",
+    icon: "/src/assets/iconJinhsi.png",
     name: "Jinshi",
     element: "Spectro",
     weaponType: "Broadblade",
@@ -531,7 +531,7 @@ const resonators = [
     firstAppearance: "Huanglong",
     rarity: 5, 
     releaseYear: 2024
-  }
+  },
 
 ];
 

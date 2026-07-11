@@ -2,6 +2,11 @@ import resonators from "../resonators.js";
 
 const app = document.getElementById("app");
 
+const targetResonator =
+  resonators[Math.floor(Math.random() * resonators.length)];
+
+console.log("Target resonator:", targetResonator);
+
 app.innerHTML = `
   <main>
     <div> 
