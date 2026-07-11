@@ -224,7 +224,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconJinhsi.png",
-    name: "Jinshi",
+    name: "Jinhsi",
     element: "Spectro",
     weaponType: "Broadblade",
     gender: "Female",
@@ -494,7 +494,7 @@ const resonators = [
   }, 
   {
     icon: "/src/assets/iconYouhu.png",
-    name: "Youhua",
+    name: "Youhu",
     element: "Glacio",
     weaponType: "Gauntlets",
     gender: "Female",
