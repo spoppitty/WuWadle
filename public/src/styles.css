@@ -1,18 +1,85 @@
-/*page stylings*/
+:root {
+  --page-bg-color: #dfcb74;
+  --page-bg-image: url('/src/assets/bg3.png');
+
+  --bg-layer-height: 80vh;
+  --bg-size: 100% auto;
+  --bg-position: top center;
+  --fade-solid-until: 65%;
+}
+
+html {
+  background-color: var(--page-bg-color);
+}
+
 body {
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 2rem;
+  min-height: 100vh;
 
-  /*background image*/
-  background-color: #2D779C;
-  background-image: 
-    linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(7, 29, 41, 1)),
-    url('/src/assets/bg1.png');
+  background-color: var(--page-bg-color);
+
+  position: relative;
+  isolation: isolate;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--bg-layer-height);
+
+  background-image: var(--page-bg-image);
   background-repeat: no-repeat;
-  background-size: 100% auto;
-  background-position: top center;
-  background-attachment: fixed;
+  background-size: var(--bg-size);
+  background-position: var(--bg-position);
+
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Minimized / normal window */
+/* Minimized / normal window: fade image into background */
+@media (max-width: 1199px) {
+  :root {
+    --bg-layer-height: 57vw;
+    --bg-size: 100% auto;
+    --bg-position: top center;
+  }
+
+  body::before {
+    -webkit-mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 55%,
+      transparent 100%
+    );
+
+    mask-image: linear-gradient(
+      to bottom,
+      black 0%,
+      black 55%,
+      transparent 100%
+    );
+  }
+}
+
+/* Fullscreen / wide window: no fade */
+@media (min-width: 1200px) {
+  :root {
+    --bg-layer-height: 110vh;
+    --bg-size: cover;
+    --bg-position: center top;
+  }
+
+  body::before {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
 }
 
 main {
@@ -235,5 +302,24 @@ main {
 }
 
 .info-menu.show {
+  display: block;
+}
+
+/* win message */
+.win-message {
+  display: none;
+  margin: 24px auto 0;
+  max-width: 500px;
+  padding: 18px 24px;
+  border-radius: 18px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.win-message.show {
   display: block;
 }

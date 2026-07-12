@@ -2,6 +2,76 @@ import resonators from "../resonators.js";
 
 const app = document.getElementById("app");
 
+const backgroundImagePath = "/src/assets/bg3.png";
+
+function rgbToCss(color) {
+  return `rgb(${color.r}, ${color.g}, ${color.b})`;
+}
+
+function getAverageColorFromImage(imagePath) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.crossOrigin = "anonymous";
+    image.src = imagePath;
+
+    image.onload = () => {
+      const canvas = document.createElement("canvas");
+      const context = canvas.getContext("2d");
+
+      const sampleWidth = 50;
+      const sampleHeight = 50;
+
+      canvas.width = sampleWidth;
+      canvas.height = sampleHeight;
+
+      context.drawImage(image, 0, 0, sampleWidth, sampleHeight);
+
+      const imageData = context.getImageData(0, 0, sampleWidth, sampleHeight);
+      const pixels = imageData.data;
+
+      let r = 0;
+      let g = 0;
+      let b = 0;
+      let count = 0;
+
+      for (let i = 0; i < pixels.length; i += 4) {
+        r += pixels[i];
+        g += pixels[i + 1];
+        b += pixels[i + 2];
+        count++;
+      }
+
+      resolve({
+        r: Math.floor(r / count),
+        g: Math.floor(g / count),
+        b: Math.floor(b / count),
+      });
+    };
+
+    image.onerror = reject;
+  });
+}
+
+async function setAutomaticBackgroundTheme() {
+  try {
+    const averageColor = await getAverageColorFromImage(backgroundImagePath);
+
+    document.documentElement.style.setProperty(
+      "--page-bg-image",
+      `url('${backgroundImagePath}')`
+    );
+
+    document.documentElement.style.setProperty(
+      "--page-bg-color",
+      rgbToCss(averageColor)
+    );
+  } catch (error) {
+    console.error("Could not create automatic background theme:", error);
+  }
+}
+
+setAutomaticBackgroundTheme();
+
 // picking a target resonator on each refresh
 const targetResonator =
   resonators[Math.floor(Math.random() * resonators.length)];
@@ -25,7 +95,7 @@ app.innerHTML = `
       <div class="guess-subtitle">Type your guess below</div>
     </div>
 
-    <div class="guess-input-wrapper">
+    <div class="guess-input-wrapper" id="guessInputWrapper">
       <div class="search-area">
         <input
           type="text"
@@ -57,6 +127,10 @@ app.innerHTML = `
 
         <tbody id="resonatorTableBody"></tbody>
       </table>
+
+      <div class="win-message" id="winMessage">
+        Congratulations, you guessed the Resonator!
+      </div>
     </section>
   </main>
 
@@ -82,11 +156,19 @@ infoButton.addEventListener("click", () => {
 // guess resonator button
 const addGuessButton = document.getElementById("addGuessButton");
 const resonatorTableBody = document.getElementById("resonatorTableBody");
+const guessInputWrapper = document.getElementById("guessInputWrapper");
+const winMessage = document.getElementById("winMessage");
 
 const guessInput = document.getElementById("guessInput");
 const searchResults = document.getElementById("searchResults");
 
+// hide win message when the page first loads
+winMessage.classList.remove("show");
+winMessage.style.display = "none";
+
 let selectedResonator = null;
+
+let guessedResonators = [];
 
 function showSearchResults(searchText) {
   searchResults.innerHTML = "";
@@ -99,10 +181,11 @@ function showSearchResults(searchText) {
   const search = searchText.trim().toLowerCase();
 
   const matchingResonators = resonators
-    .filter((resonator) =>
-      resonator.name.toLowerCase().startsWith(search)
-    )
-    .sort((a, b) => a.name.localeCompare(b.name));
+  .filter((resonator) =>
+    resonator.name.toLowerCase().startsWith(search) &&
+    !guessedResonators.includes(resonator.name)
+  )
+  .sort((a, b) => a.name.localeCompare(b.name));
 
   if (matchingResonators.length === 0) {
     searchResults.innerHTML = `
@@ -129,9 +212,7 @@ function showSearchResults(searchText) {
     resultItem.addEventListener("click", () => {
       guessInput.value = resonator.name;
       selectedResonator = resonator;
-
-      searchResults.innerHTML = "";
-      searchResults.classList.remove("show");
+      submitGuess();
     });
 
     searchResults.appendChild(resultItem);
@@ -144,6 +225,13 @@ guessInput.addEventListener("input", () => {
   showSearchResults(guessInput.value);
 });
 
+guessInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    submitGuess();
+  }
+});
+
 document.addEventListener("click", (event) => {
   if (!event.target.closest(".search-area")) {
     searchResults.innerHTML = "";
@@ -151,7 +239,7 @@ document.addEventListener("click", (event) => {
   }
 });
 
-addGuessButton.addEventListener("click", () => {
+function submitGuess() {
   const guessName = guessInput.value.trim();
 
   const guessedResonator =
@@ -162,7 +250,16 @@ addGuessButton.addEventListener("click", () => {
     );
 
   if (!guessedResonator) {
-    alert("Please select a valid resonator.");
+    // alert("Please select a valid resonator.");
+    return;
+  }
+
+  if (guessedResonators.includes(guessedResonator.name)) {
+    // alert("You already guessed this resonator."); 
+    guessInput.value = "";
+    selectedResonator = null;
+    searchResults.innerHTML = "";
+    searchResults.classList.remove("show");
     return;
   }
 
@@ -203,7 +300,90 @@ addGuessButton.addEventListener("click", () => {
   `;
 
   resonatorTableBody.prepend(newRow);
+  guessedResonators.push(guessedResonator.name);
+
+  if (guessedResonator.name === targetResonator.name) {
+    guessInputWrapper.style.display = "none";
+    searchResults.innerHTML = "";
+    searchResults.classList.remove("show");
+
+    winMessage.style.display = "block";
+    winMessage.classList.add("show");
+  }
+
+  guessInput.value = "";
+  selectedResonator = null;
+  searchResults.innerHTML = "";
+  searchResults.classList.remove("show");
+}
+
+addGuessButton.addEventListener("click", submitGuess);
+/*
+addGuessButton.addEventListener("click", () => {
+  const guessName = guessInput.value.trim();
+
+  const guessedResonator =
+    selectedResonator ||
+    resonators.find(
+      (resonator) =>
+        resonator.name.toLowerCase() === guessName.toLowerCase()
+    );
+
+  if (!guessedResonator) {
+    alert("Please select a valid resonator.");
+    return;
+  }
+
+  if (guessedResonators.includes(guessedResonator.name)) {
+    alert("You already guessed this resonator.");
+    guessInput.value = "";
+    selectedResonator = null;
+    searchResults.innerHTML = "";
+    searchResults.classList.remove("show");
+    return;
+}
+
+  const newRow = document.createElement("tr");
+
+  newRow.innerHTML = `
+    <td>
+      <img
+        src="${guessedResonator.icon}"
+        alt="${guessedResonator.name}"
+        class="resonator-img"
+      >
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.gender, targetResonator.gender)}">
+      ${guessedResonator.gender}
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.element, targetResonator.element)}">
+      ${guessedResonator.element}
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.weaponType, targetResonator.weaponType)}">
+      ${guessedResonator.weaponType}
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.firstAppearance, targetResonator.firstAppearance)}">
+      ${guessedResonator.firstAppearance}
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.rarity, targetResonator.rarity)}">
+      ${guessedResonator.rarity}-Star
+    </td>
+
+    <td class="${getMatchClass(guessedResonator.releaseYear, targetResonator.releaseYear)}">
+      ${guessedResonator.releaseYear}
+    </td>
+  `;
+
+  resonatorTableBody.prepend(newRow);
+
+  guessedResonators.push(guessedResonator.name);
 
   guessInput.value = "";
   selectedResonator = null;
 });
+*/
