@@ -145,6 +145,27 @@ app.innerHTML = `
 
 `;
 
+// Create the Splash Game button
+const splashGameButton = document.createElement("button");
+
+splashGameButton.type = "button";
+splashGameButton.id = "splashGameButton";
+splashGameButton.className = "splash-game-button";
+splashGameButton.textContent = "S";
+splashGameButton.title = "Play Splash Game";
+
+splashGameButton.addEventListener("click", async () => {
+  try {
+    const splashGameModule = await import("./splashGame.js");
+    splashGameModule.renderSplashGame();
+  } catch (error) {
+    console.error("Could not load Splash Game:", error);
+  }
+});
+
+const mainElement = app.querySelector("main");
+mainElement.appendChild(splashGameButton);
+
 // info button
 const infoButton = document.getElementById("infoButton");
 const infoMenu = document.getElementById("infoMenu");

@@ -1,29 +1,29 @@
-
-
+// all 5 star resonators have an added "splashImage" attribute
 const resonators = [
-  
   {
     icon: "/src/assets/iconAalto.png",
     name: "Aalto",
-    element: "Aero", 
-    weaponType: "Pistols", 
-    gender: "Male", 
+    element: "Aero",
+    weaponType: "Pistols",
+    gender: "Male",
     firstAppearance: "Black Shores",
-    rarity: 4, 
+    rarity: 4,
     releaseYear: 2024
   },
   {
     icon: "/src/assets/iconAemeath.png",
+    splashImage: "/src/assets/splashAemeath.png",
     name: "Aemeath",
-    element: "Fusion", 
-    weaponType: "Sword", 
-    gender: "Female", 
+    element: "Fusion",
+    weaponType: "Sword",
+    gender: "Female",
     firstAppearance: "Lahai Roi",
-    rarity: 5, 
+    rarity: 5,
     releaseYear: 2026
   },
   {
     icon: "/src/assets/iconAugusta.png",
+    splashImage: "/src/assets/splashAugusta.png",
     name: "Augusta",
     element: "Electro",
     weaponType: "Broadblade",
@@ -41,9 +41,10 @@ const resonators = [
     firstAppearance: "Huanglong",
     rarity: 4,
     releaseYear: 2024
-  }, 
+  },
   {
     icon: "/src/assets/iconBrant.png",
+    splashImage: "/src/assets/splashBrant.png",
     name: "Brant",
     element: "Fusion",
     weaponType: "Sword",
@@ -64,6 +65,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconCalcharo.png",
+    splashImage: "/src/assets/splashCalcharo.png",
     name: "Calcharo",
     element: "Electro",
     weaponType: "Broadblade",
@@ -71,19 +73,21 @@ const resonators = [
     firstAppearance: "Septimont",
     rarity: 5,
     releaseYear: 2024
-  }, 
+  },
   {
     icon: "/src/assets/iconCamellya.png",
+    splashImage: "/src/assets/splashCamellya.png",
     name: "Camellya",
     element: "Havoc",
     weaponType: "Sword",
     gender: "Female",
-    firstAppearance: "Huanglong", 
-    rarity: 5, 
+    firstAppearance: "Huanglong",
+    rarity: 5,
     releaseYear: 2024
   },
   {
     icon: "/src/assets/iconCantarella.png",
+    splashImage: "/src/assets/splashCantarella.png",
     name: "Cantarella",
     element: "Havoc",
     weaponType: "Rectifier",
@@ -94,6 +98,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconCarlotta.png",
+    splashImage: "/src/assets/splashCarlotta.png",
     name: "Carlotta",
     element: "Glacio",
     weaponType: "Pistols",
@@ -104,6 +109,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconCartethyia.png",
+    splashImage: "/src/assets/splashCartethyia.png",
     name: "Cartethyia",
     element: "Aero",
     weaponType: "Sword",
@@ -114,6 +120,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconChangli.png",
+    splashImage: "/src/assets/splashChangli.png",
     name: "Changli",
     element: "Fusion",
     weaponType: "Sword",
@@ -124,6 +131,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconChisa.png",
+    splashImage: "/src/assets/splashChisa.png",
     name: "Chisa",
     element: "Havoc",
     weaponType: "Broadblade",
@@ -144,6 +152,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconCiaccona.png",
+    splashImage: "/src/assets/splashCiaccona.png",
     name: "Ciaccona",
     element: "Aero",
     weaponType: "Pistols",
@@ -151,7 +160,7 @@ const resonators = [
     firstAppearance: "Ragunna",
     rarity: 5,
     releaseYear: 2025
-  }, 
+  },
   {
     icon: "/src/assets/iconDanjin.png",
     name: "Danjin",
@@ -164,6 +173,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconDenia.png",
+    splashImage: "/src/assets/splashDenia.png",
     name: "Denia",
     element: "Fusion",
     weaponType: "Rectifier",
@@ -174,6 +184,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconEncore.png",
+    splashImage: "/src/assets/splashEncore.png",
     name: "Encore",
     element: "Fusion",
     weaponType: "Rectifier",
@@ -184,6 +195,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconGalbrena.png",
+    splashImage: "/src/assets/splashGalbrena.png",
     name: "Galbrena",
     element: "Fusion",
     weaponType: "Pistols",
@@ -194,6 +206,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconHiyuki.png",
+    splashImage: "/src/assets/splashHiyuki.png",
     name: "Hiyuki",
     element: "Glacio",
     weaponType: "Sword",
@@ -204,6 +217,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconIuno.png",
+    splashImage: "/src/assets/splashIuno.png",
     name: "Iuno",
     element: "Aero",
     weaponType: "Gauntlets",
@@ -214,6 +228,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconJianxin.png",
+    splashImage: "/src/assets/splashJianxin.png",
     name: "Jianxin",
     element: "Aero",
     weaponType: "Gauntlets",
@@ -224,6 +239,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconJinhsi.png",
+    splashImage: "/src/assets/splashJinhsi.png",
     name: "Jinhsi",
     element: "Spectro",
     weaponType: "Broadblade",
@@ -234,6 +250,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconJiyan.png",
+    splashImage: "/src/assets/splashJiyan.png",
     name: "Jiyan",
     element: "Aero",
     weaponType: "Broadblade",
@@ -244,6 +261,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconLingyang.png",
+    splashImage: "/src/assets/splashLingyang.png",
     name: "Lingyang",
     element: "Glacio",
     weaponType: "Gauntlets",
@@ -254,6 +272,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconLucilla.png",
+    splashImage: "/src/assets/splashLucilla.png",
     name: "Lucilla",
     element: "Glacio",
     weaponType: "Rectifier",
@@ -264,6 +283,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconLucy.png",
+    splashImage: "/src/assets/splashLucy.png",
     name: "Lucy",
     element: "Spectro",
     weaponType: "Pistols",
@@ -284,6 +304,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconLupa.png",
+    splashImage: "/src/assets/splashLupa.png",
     name: "Lupa",
     element: "Fusion",
     weaponType: "Broadblade",
@@ -294,8 +315,9 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconLuuk_Herssen.png",
+    splashImage: "/src/assets/splashLuuk_Herssen.png",
     name: "Luuk Herssen",
-    element: "Spectro", 
+    element: "Spectro",
     weaponType: "Gauntlets",
     gender: "Male",
     firstAppearance: "Lahai Roi",
@@ -304,6 +326,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconLynae.png",
+    splashImage: "/src/assets/splashLynae.png",
     name: "Lynae",
     element: "Spectro",
     weaponType: "Pistols",
@@ -314,12 +337,13 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconMornye.png",
+    splashImage: "/src/assets/splashMornye.png",
     name: "Mornye",
     element: "Fusion",
     weaponType: "Broadblade",
     gender: "Female",
     firstAppearance: "Lahai Roi",
-    rarity: 5, 
+    rarity: 5,
     releaseYear: 2026
   },
   {
@@ -329,11 +353,12 @@ const resonators = [
     weaponType: "Pistols",
     gender: "Male",
     firstAppearance: "Huanglong",
-    rarity: 4, 
+    rarity: 4,
     releaseYear: 2024
   },
   {
     icon: "/src/assets/iconPhoebe.png",
+    splashImage: "/src/assets/splashPhoebe.png",
     name: "Phoebe",
     element: "Spectro",
     weaponType: "Rectifier",
@@ -344,6 +369,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconPhrolova.png",
+    splashImage: "/src/assets/splashPhrolova.png",
     name: "Phrolova",
     element: "Havoc",
     weaponType: "Rectifier",
@@ -354,6 +380,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconQiuyuan.png",
+    splashImage: "/src/assets/splashQiuyuan.png",
     name: "Qiuyuan",
     element: "Aero",
     weaponType: "Sword",
@@ -364,6 +391,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconRebecca.png",
+    splashImage: "/src/assets/splashRebecca.png",
     name: "Rebecca",
     element: "Electro",
     weaponType: "Pistols",
@@ -374,6 +402,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconRoccia.png",
+    splashImage: "/src/assets/splashRoccia.png",
     name: "Roccia",
     element: "Havoc",
     weaponType: "Gauntlets",
@@ -383,7 +412,8 @@ const resonators = [
     releaseYear: 2025
   },
   {
-    icon: "/src/assets/iconRover.png", 
+    icon: "/src/assets/iconRover.png",
+    splashImage: "/src/assets/splashRover.png",
     name: "Rover",
     element: "Multiple",
     weaponType: "Sword",
@@ -399,11 +429,12 @@ const resonators = [
     weaponType: "Sword",
     gender: "Female",
     firstAppearance: "Huanglong",
-    rarity: 4, 
+    rarity: 4,
     releaseYear: 2024
   },
-  { 
+  {
     icon: "/src/assets/iconShorekeeper.png",
+    splashImage: "/src/assets/splashShorekeeper.png",
     name: "Shorekeeper",
     element: "Spectro",
     weaponType: "Rectifier",
@@ -414,6 +445,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconSigrika.png",
+    splashImage: "/src/assets/splashSigrika.png",
     name: "Sigrika",
     element: "Aero",
     weaponType: "Gauntlents",
@@ -424,12 +456,13 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconSuisui.png",
+    splashImage: "/src/assets/splashSuisui.png",
     name: "Suisui",
     element: "Glacio",
     weaponType: "Rectifier",
     gender: "Female",
     firstAppearance: "Huanglong",
-    rarity: 5, 
+    rarity: 5,
     releaseYear: 2026
   },
   {
@@ -444,6 +477,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconVerina.png",
+    splashImage: "/src/assets/splashVerina.png",
     name: "Verina",
     element: "Spectro",
     weaponType: "Rectifier",
@@ -454,6 +488,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconXiangli_Yao.png",
+    splashImage: "/src/assets/splashXiangli_Yao.png",
     name: "Xiangli Yao",
     element: "Electro",
     weaponType: "Gauntlets",
@@ -469,11 +504,12 @@ const resonators = [
     weaponType: "Sword",
     gender: "Female",
     firstAppearance: "Huanglong",
-    rarity: 4, 
+    rarity: 4,
     releaseYear: 2024
   },
   {
     icon: "/src/assets/iconYangyangXuanling.png",
+    splashImage: "/src/assets/splashYangyangXuanling.png",
     name: "Yangyang: Xuanling",
     element: "Havoc",
     weaponType: "Sword",
@@ -484,6 +520,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconYinlin.png",
+    splashImage: "/src/assets/splashYinlin.png",
     name: "Yinlin",
     element: "Electro",
     weaponType: "Rectifier",
@@ -491,7 +528,7 @@ const resonators = [
     firstAppearance: "Huanglong",
     rarity: 5,
     releaseYear: 2024
-  }, 
+  },
   {
     icon: "/src/assets/iconYouhu.png",
     name: "Youhu",
@@ -514,6 +551,7 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconZani.png",
+    splashImage: "/src/assets/splashZani.png",
     name: "Zani",
     element: "Spectro",
     weaponType: "Gauntlets",
@@ -524,15 +562,15 @@ const resonators = [
   },
   {
     icon: "/src/assets/iconZhezhi.png",
+    splashImage: "/src/assets/splashZhezhi.png",
     name: "Zhezhi",
     element: "Glacio",
     weaponType: "Rectifier",
     gender: "Female",
     firstAppearance: "Huanglong",
-    rarity: 5, 
+    rarity: 5,
     releaseYear: 2024
-  },
-
+  }
 ];
 
 export default resonators;

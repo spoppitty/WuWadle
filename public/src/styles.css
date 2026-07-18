@@ -282,6 +282,8 @@ main {
   font-size: 1.4rem;
   font-weight: bold;
   cursor: pointer;
+
+  z-index: 100;
 }
 
 .info-menu {
@@ -305,6 +307,49 @@ main {
   display: block;
 }
 
+/* splash game button */
+.splash-game-button {
+  position: fixed;
+  bottom: 1.5rem;
+  right: calc(1.5rem + 42px + 0.75rem);
+
+  width: 42px;
+  height: 42px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  border: 2px solid #222;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #222;
+
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  line-height: 1;
+
+  cursor: pointer;
+  z-index: 100;
+}
+
+.splash-game-button:hover {
+  background-color: rgba(255, 255, 255, 1);
+  transform: scale(1.08);
+}
+
+.splash-game-button:active {
+  transform: scale(0.95);
+}
+
+.splash-game-button:focus-visible {
+  outline: 3px solid rgba(34, 34, 34, 0.45);
+  outline-offset: 3px;
+}
+
 /* win message */
 .win-message {
   display: none;
@@ -322,4 +367,177 @@ main {
 
 .win-message.show {
   display: block;
+}
+
+/* Entire Splash Game page */
+.splash-game-page {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Mystery splash-art container */
+.target-image-box {
+  width: min(320px, 80vw);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background-color: rgba(255, 255, 255, 0.85);
+  border: 2px solid #222;
+  border-radius: 16px;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Mystery splash art */
+.target-resonator-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  visibility: hidden;
+  transform-origin: center;
+}
+
+.target-resonator-image.is-ready {
+  visibility: visible;
+
+  transition:
+    transform 0.7s ease,
+    transform-origin 0.7s ease;
+}
+
+/* Previous Guesses box */
+.splash-guess-history {
+  width: min(500px, 90%);
+  margin: 2rem auto 0;
+  padding: 1.25rem;
+
+  text-align: center;
+
+  background-color: rgba(255, 255, 255, 0.88);
+  border: 2px solid #222;
+  border-radius: 14px;
+}
+
+/* Previous Guesses title */
+.splash-guess-history-title {
+  margin: 0 0 1rem;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+/* Container holding guesses */
+.splash-guesses-list {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+
+  text-align: center;
+}
+
+/* No guesses yet text */
+.no-splash-guesses {
+  width: 100%;
+  margin: 0;
+  text-align: center;
+}
+
+/* Individual previous guess */
+.splash-guess-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 0.75rem 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1rem;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(34, 34, 34, 0.3);
+  border-radius: 10px;
+}
+
+.splash-guess-icon {
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.splash-guess-name {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.splash-guess-card.incorrect {
+  background-color: rgba(255, 205, 205, 0.95);
+  border-color: rgba(170, 85, 85, 0.55);
+}
+
+.splash-guess-card.correct {
+  background-color: rgba(205, 242, 210, 0.95);
+  border-color: rgba(75, 145, 85, 0.6);
+}
+
+.splash-back-button {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+
+  width: 42px;
+  height: 42px;
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 2px solid #222;
+  border-radius: 50%;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #222;
+
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: bold;
+  line-height: 1;
+
+  cursor: pointer;
+  z-index: 100;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.splash-back-button:hover {
+  background-color: white;
+  transform: scale(1.08);
+}
+
+.splash-back-button:active {
+  transform: scale(0.95);
+}
+
+.splash-back-button:focus-visible {
+  outline: 3px solid rgba(34, 34, 34, 0.45);
+  outline-offset: 3px;
 }
