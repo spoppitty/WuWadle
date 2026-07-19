@@ -85,6 +85,117 @@ function getMatchClass(resonatorValue, targetValue) {
 }
 
 app.innerHTML = `
+  <main class="home-page">
+    <section class="hero-section">
+      <div class="logo-wrap">
+        <img src="/src/assets/logo1.png" class="page-logo" alt="WuWadle Logo">
+      </div>
+
+      <div class="hero-subtitle">
+        <span></span>
+        <p>Guess Today's Resonator</p>
+        <span></span>
+      </div>
+
+      <div class="guess-input-wrapper" id="guessInputWrapper">
+        <div class="search-area">
+          <input
+            type="text"
+            class="guess-input"
+            id="guessInput"
+            placeholder="Enter resonator name..."
+            autocomplete="off"
+          >
+
+          <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <button class="add-guess-button" id="addGuessButton" aria-label="Add guess">
+          +
+        </button>
+      </div>
+    </section>
+
+    <section class="resonator-list">
+      <table class="resonator-table">
+        <thead>
+          <tr>
+            <th>
+              <div class="table-heading">
+                <span class="heading-icon">✦</span>
+                <span>Resonator</span>
+              </div>
+            </th>
+
+            <th>
+              <div class="table-heading">
+                <span class="heading-icon">✧</span>
+                <span>Gender</span>
+              </div>
+            </th>
+
+            <th>
+              <div class="table-heading">
+                <span class="heading-icon">◈</span>
+                <span>Element</span>
+              </div>
+            </th>
+
+            <th>
+              <div class="table-heading">
+                <span class="heading-icon">⚔</span>
+                <span>Weapon Type</span>
+              </div>
+            </th>
+
+            <th>
+              <div class="table-heading">
+                <span class="heading-icon">✶</span>
+                <span>First Appearance</span>
+              </div>
+            </th>
+
+            <th>
+              <div class="table-heading">
+                <span class="heading-icon">✦</span>
+                <span>Rarity</span>
+              </div>
+            </th>
+
+            <th>
+              <div class="table-heading">
+                <span class="heading-icon">◎</span>
+                <span>Release Year</span>
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+        <tbody id="resonatorTableBody"></tbody>
+      </table>
+
+      <div class="win-message" id="winMessage">
+        Congratulations, you guessed the Resonator!
+      </div>
+    </section>
+
+    <div class="bottom-brand">
+      <span></span>
+      <p>Wuthering Waves</p>
+      <span></span>
+    </div>
+  </main>
+
+  <div class="info-menu" id="infoMenu">
+    <p>
+      Guess the daily resonator using clues like element, weapon type,
+      gender, region, rarity, and release year.
+    </p>
+  </div>
+
+  <button class="info-button" id="infoButton">i</button>
+`;
+/* app.innerHTML = `
   <main>
     <div> 
       <img src="/src/assets/logo1.png" class = "page-logo" alt="Website Logo">
@@ -143,7 +254,7 @@ app.innerHTML = `
 
   <button class="info-button" id="infoButton">i</button>
 
-`;
+`; */
 
 // Create the Splash Game button
 const splashGameButton = document.createElement("button");
@@ -286,7 +397,79 @@ function submitGuess() {
 
   const newRow = document.createElement("tr");
 
-  newRow.innerHTML = `
+newRow.innerHTML = `
+  <td class="portrait-cell">
+    <div class="portrait-frame">
+      <img
+        src="${guessedResonator.icon}"
+        alt="${guessedResonator.name}"
+        class="resonator-img"
+      >
+    </div>
+  </td>
+
+  <td class="${getMatchClass(guessedResonator.gender, targetResonator.gender)}">
+    <div class="trait-cell">
+      <img
+        src="${guessedResonator.genderIcon}"
+        alt="${guessedResonator.gender}"
+        class="trait-emblem"
+      >
+      <span>${guessedResonator.gender}</span>
+    </div>
+  </td>
+
+  <td class="${getMatchClass(guessedResonator.element, targetResonator.element)}">
+    <div class="trait-cell">
+      <img
+        src="${guessedResonator.elementIcon}"
+        alt="${guessedResonator.element}"
+        class="trait-emblem"
+      >
+      <span>${guessedResonator.element}</span>
+    </div>
+  </td>
+
+  <td class="${getMatchClass(guessedResonator.weaponType, targetResonator.weaponType)}">
+    <div class="trait-cell">
+      <img
+        src="${guessedResonator.weaponIcon}"
+        alt="${guessedResonator.weaponType}"
+        class="trait-emblem"
+      >
+      <span>${guessedResonator.weaponType}</span>
+    </div>
+  </td>
+
+  <td class="${getMatchClass(guessedResonator.firstAppearance, targetResonator.firstAppearance)}">
+    <div class="trait-cell">
+      <img
+        src="${guessedResonator.regionIcon}"
+        alt="${guessedResonator.firstAppearance}"
+        class="trait-emblem"
+      >
+      <span>${guessedResonator.firstAppearance}</span>
+    </div>
+  </td>
+
+  <td class="${getMatchClass(guessedResonator.rarity, targetResonator.rarity)}">
+    <div class="trait-cell">
+      <img
+        src="${guessedResonator.rarityIcon}"
+        alt="${guessedResonator.rarity}-Star"
+        class="trait-emblem"
+      >
+      <span>${guessedResonator.rarity}-Star</span>
+    </div>
+  </td>
+
+  <td class="${getMatchClass(guessedResonator.releaseYear, targetResonator.releaseYear)}">
+    <div class="trait-cell year-cell">
+      <span>${guessedResonator.releaseYear}</span>
+    </div>
+  </td>
+`;
+  /* newRow.innerHTML = `
     <td>
       <img
         src="${guessedResonator.icon}"
@@ -318,7 +501,7 @@ function submitGuess() {
     <td class="${getMatchClass(guessedResonator.releaseYear, targetResonator.releaseYear)}">
       ${guessedResonator.releaseYear}
     </td>
-  `;
+  `; */
 
   resonatorTableBody.prepend(newRow);
   guessedResonators.push(guessedResonator.name);
