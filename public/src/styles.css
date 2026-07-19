@@ -36,7 +36,7 @@ body {
   min-height: 100vh;
   padding: 0;
 
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-family: "Cinzel", "Times New Roman", serif;
   color: var(--ww-text);
 
   background-color: var(--page-bg-color);
@@ -256,7 +256,7 @@ main.home-page {
   background: transparent;
 
   color: var(--ww-text);
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+  font-family: "Cinzel", "Times New Roman", serif;
   font-size: 1.25rem;
   text-align: left;
 }
@@ -385,8 +385,8 @@ main.home-page {
 }
 
 /* Table */
-.resonator-list {
-  width: 100%;
+.home-page .resonator-list {
+  width: min(1200px, 92vw);
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -424,9 +424,9 @@ main.home-page {
   text-align: center;
 }
 
-.resonator-table th {
-  height: 116px;
-  padding: 0.8rem 0.5rem;
+.home-page .resonator-table th {
+  height: 86px;
+  padding: 0.45rem 0.35rem;
 
   background:
     linear-gradient(180deg, rgba(29, 31, 36, 0.94), rgba(21, 23, 27, 0.94));
@@ -476,9 +476,9 @@ main.home-page {
   transform: rotate(-45deg);
 }
 
-.resonator-table td {
-  height: 155px;
-  padding: 0.75rem;
+.home-page .resonator-table td {
+  height: 112px;
+  padding: 0.45rem;
 
   background:
     radial-gradient(circle at center, rgba(255, 255, 255, 0.035), transparent 62%),
@@ -509,12 +509,12 @@ main.home-page {
   padding: 0.65rem;
 }
 
-.portrait-frame {
-  width: 112px;
-  height: 112px;
+.home-page .portrait-frame {
+  width: 82px;
+  height: 82px;
 
   margin: 0 auto;
-  padding: 7px;
+  padding: 0px;
 
   position: relative;
 
@@ -555,18 +555,43 @@ main.home-page {
   border-radius: 4px;
 }
 
-.trait-cell {
-  min-height: 105px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 14px;
+.home-page .trait-cell {
+  height: 100%;
+  min-height: 0;
+  position: relative;
 
   font-family: "Cinzel", "Times New Roman", serif;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+}
+
+.home-page .trait-cell .trait-emblem {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+
+  width: 52px;
+  height: 52px;
+
+  transform: translateX(-50%);
+  object-fit: contain;
+
+  filter:
+    brightness(1.15)
+    drop-shadow(0 0 8px rgba(255, 255, 255, 0.18));
+}
+
+.home-page .trait-cell span {
+  position: absolute;
+  top: 82px;
+  left: 50%;
+
+  width: 100%;
+  transform: translateX(-50%);
+
+  display: block;
+  line-height: 1.1;
+  text-align: center;
 }
 
 .trait-icon {
@@ -580,14 +605,56 @@ main.home-page {
   filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.18));
 }
 
-.trait-emblem {
+.home-page .emblem-bg-cell {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-page .trait-cell .gender-emblem {
   width: 42px;
   height: 42px;
-  object-fit: contain;
+  top: 29px;
+}
+
+.home-page .trait-cell .rarity-emblem {
+  width: 66px;
+  height: 66px;
+  top: 18px;
+}
+
+.home-page .emblem-bg-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image: var(--emblem-bg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 58%;
+
+  opacity: 1;
 
   filter:
-    brightness(1.15)
-    drop-shadow(0 0 8px rgba(255, 255, 255, 0.18));
+    brightness(1.25)
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.25));
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.home-page .emblem-bg-cell .trait-cell {
+  position: relative;
+  z-index: 1;
+}
+
+.home-page .gender-emblem {
+  width: 34px;
+  height: 34px;
+}
+
+.home-page .rarity-emblem {
+  width: 58px;
+  height: 58px;
 }
 
 .element-icon {
@@ -603,11 +670,27 @@ main.home-page {
     0 0 18px rgba(244, 201, 110, 0.25);
 }
 
-.year-cell {
-  font-family: "Inter", "Segoe UI", Arial, sans-serif;
+.home-page .year-cell {
+  height: 100%;
+  min-height: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  font-family: "Cinzel", "Times New Roman", serif;
   font-size: 1.75rem;
   font-weight: 400;
   letter-spacing: 0.02em;
+}
+
+.home-page .year-cell span {
+  position: static;
+  transform: none;
+  width: auto;
+  height: auto;
 }
 
 /* Match / no-match colors are now subtle overlays instead of bright blocks */
@@ -786,7 +869,6 @@ main.home-page {
 }
 
 /* Mobile/tablet */
-/* Mobile/tablet */
 @media (max-width: 900px) {
   main.home-page {
     width: min(100% - 24px, 900px);
@@ -845,18 +927,38 @@ main.home-page {
   }
 
   .home-page .trait-cell {
-    min-height: 88px;
-    gap: 9px;
-    font-size: 0.82rem;
-  }
+  height: 100%;
+  min-height: 0;
+  position: relative;
 
-  .home-page .trait-cell {
-    min-height: 78px;
-    gap: clamp(5px, 1vw, 9px);
-    font-size: clamp(0.65rem, 1.6vw, 0.82rem);
-  }
+  font-size: clamp(0.65rem, 1.6vw, 0.82rem);
+}
 
-  .home-page .year-cell {
+.home-page .trait-cell .trait-emblem {
+  top: 20px;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 0;
+}
+
+.home-page .trait-cell span {
+  top: 68px;
+  height: auto;
+}
+
+.home-page .trait-cell .gender-emblem {
+  width: 34px;
+  height: 34px;
+  top: 24px;
+}
+
+.home-page .trait-cell .rarity-emblem {
+  width: 52px;
+  height: 52px;
+  top: 15px;
+}
+
+.home-page .year-cell {
     font-size: 1.25rem;
   }
 }

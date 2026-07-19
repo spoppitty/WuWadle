@@ -676,7 +676,7 @@ const resonators = [
     gender: "Female",
     genderIcon: "/src/assets/genderFemale.png",
     firstAppearance: "Black Shores",
-    regionIcon: "/src/assets/regionBlackShores.png",
+    regionIcon: "/src/assets/regionBlack_Shores.png",
     rarity: 5,
     rarityIcon: "/src/assets/rarity5Stars.png",
     releaseYear: 2024

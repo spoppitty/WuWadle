@@ -408,12 +408,12 @@ newRow.innerHTML = `
     </div>
   </td>
 
-  <td class="${getMatchClass(guessedResonator.gender, targetResonator.gender)}">
+   <td class="${getMatchClass(guessedResonator.gender, targetResonator.gender)}">
     <div class="trait-cell">
       <img
         src="${guessedResonator.genderIcon}"
         alt="${guessedResonator.gender}"
-        class="trait-emblem"
+        class="trait-emblem gender-emblem"
       >
       <span>${guessedResonator.gender}</span>
     </div>
@@ -442,66 +442,33 @@ newRow.innerHTML = `
   </td>
 
   <td class="${getMatchClass(guessedResonator.firstAppearance, targetResonator.firstAppearance)}">
-    <div class="trait-cell">
-      <img
-        src="${guessedResonator.regionIcon}"
-        alt="${guessedResonator.firstAppearance}"
-        class="trait-emblem"
-      >
-      <span>${guessedResonator.firstAppearance}</span>
-    </div>
-  </td>
+  <div class="trait-cell">
+    <img
+      src="${guessedResonator.regionIcon}"
+      alt="${guessedResonator.firstAppearance}"
+      class="trait-emblem"
+    >
+    <span>${guessedResonator.firstAppearance}</span>
+  </div>
+</td>
 
   <td class="${getMatchClass(guessedResonator.rarity, targetResonator.rarity)}">
     <div class="trait-cell">
       <img
         src="${guessedResonator.rarityIcon}"
-        alt="${guessedResonator.rarity}-Star"
-        class="trait-emblem"
+        alt="${guessedResonator.rarity}"
+        class="trait-emblem rarity-emblem"
       >
-      <span>${guessedResonator.rarity}-Star</span>
+      <span>${guessedResonator.rarity} Stars</span>
     </div>
   </td>
-
+  
   <td class="${getMatchClass(guessedResonator.releaseYear, targetResonator.releaseYear)}">
     <div class="trait-cell year-cell">
       <span>${guessedResonator.releaseYear}</span>
     </div>
   </td>
 `;
-  /* newRow.innerHTML = `
-    <td>
-      <img
-        src="${guessedResonator.icon}"
-        alt="${guessedResonator.name}"
-        class="resonator-img"
-      >
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.gender, targetResonator.gender)}">
-      ${guessedResonator.gender}
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.element, targetResonator.element)}">
-      ${guessedResonator.element}
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.weaponType, targetResonator.weaponType)}">
-      ${guessedResonator.weaponType}
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.firstAppearance, targetResonator.firstAppearance)}">
-      ${guessedResonator.firstAppearance}
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.rarity, targetResonator.rarity)}">
-      ${guessedResonator.rarity}-Star
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.releaseYear, targetResonator.releaseYear)}">
-      ${guessedResonator.releaseYear}
-    </td>
-  `; */
 
   resonatorTableBody.prepend(newRow);
   guessedResonators.push(guessedResonator.name);
@@ -522,72 +489,3 @@ newRow.innerHTML = `
 }
 
 addGuessButton.addEventListener("click", submitGuess);
-/*
-addGuessButton.addEventListener("click", () => {
-  const guessName = guessInput.value.trim();
-
-  const guessedResonator =
-    selectedResonator ||
-    resonators.find(
-      (resonator) =>
-        resonator.name.toLowerCase() === guessName.toLowerCase()
-    );
-
-  if (!guessedResonator) {
-    alert("Please select a valid resonator.");
-    return;
-  }
-
-  if (guessedResonators.includes(guessedResonator.name)) {
-    alert("You already guessed this resonator.");
-    guessInput.value = "";
-    selectedResonator = null;
-    searchResults.innerHTML = "";
-    searchResults.classList.remove("show");
-    return;
-}
-
-  const newRow = document.createElement("tr");
-
-  newRow.innerHTML = `
-    <td>
-      <img
-        src="${guessedResonator.icon}"
-        alt="${guessedResonator.name}"
-        class="resonator-img"
-      >
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.gender, targetResonator.gender)}">
-      ${guessedResonator.gender}
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.element, targetResonator.element)}">
-      ${guessedResonator.element}
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.weaponType, targetResonator.weaponType)}">
-      ${guessedResonator.weaponType}
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.firstAppearance, targetResonator.firstAppearance)}">
-      ${guessedResonator.firstAppearance}
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.rarity, targetResonator.rarity)}">
-      ${guessedResonator.rarity}-Star
-    </td>
-
-    <td class="${getMatchClass(guessedResonator.releaseYear, targetResonator.releaseYear)}">
-      ${guessedResonator.releaseYear}
-    </td>
-  `;
-
-  resonatorTableBody.prepend(newRow);
-
-  guessedResonators.push(guessedResonator.name);
-
-  guessInput.value = "";
-  selectedResonator = null;
-});
-*/
