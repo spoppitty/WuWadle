@@ -249,6 +249,17 @@ const resonators = [
     releaseYear: 2024
   },
   {
+    icon: "/src/assets/iconJingran.png",
+    /* splash image add later */
+    name: "Jingran",
+    element: "Fusion",
+    weaponType: "Broadblade",
+    gender: "Male",
+    firstAppearance: "Mengzhou",
+    rarity: 5,
+    releaseYear: 2026
+  },
+  {
     icon: "/src/assets/iconJiyan.png",
     splashImage: "/src/assets/splashJiyan.png",
     name: "Jiyan",
@@ -377,6 +388,17 @@ const resonators = [
     firstAppearance: "Huanglong",
     rarity: 5,
     releaseYear: 2025
+  },
+  {
+    icon: "/src/assets/iconQingxiao.png",
+    /* splash image add later */
+    name: "Qingxiao",
+    element: "Aero",
+    weaponType: "Sword",
+    gender: "Female",
+    firstAppearance: "Mengzhou",
+    rarity: 5,
+    releaseYear: 2026
   },
   {
     icon: "/src/assets/iconQiuyuan.png",
